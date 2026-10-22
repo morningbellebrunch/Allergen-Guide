@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f0f5f0">
+<title>Allergen Guide | The Greenhouse | Morning Belle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mb-green:#99C961; --mb-yellow:#ffde5c; --mb-coral:#fc826d; --mb-teal:#3c5c68;
+  --mb-charcoal:#4d4d4d; --mb-amber:#fbaf41; --mb-sage:#9bc4bc; --mb-orange:#f46e3b;
+  --mb-pinkberry:#d70158;
+
+  --ink:rgba(28,48,58,.95);
+  --ink-soft:rgba(50,80,92,.62);
+  --ink-faint:rgba(60,92,104,.42);
+  --hairline:rgba(60,92,104,.14);
+
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+  --r-lg:26px; --r-md:20px; --r-sm:14px; --r-xs:10px;
+  --bar-h:58px;
+
+  --glass-blur:blur(7px) saturate(230%) brightness(1.1) contrast(1.06);
+  --glass-blur-lg:blur(34px) saturate(200%) brightness(1.1) contrast(1.03);
+  --glass-fill:linear-gradient(158deg,rgba(255,255,255,.52) 0%,rgba(255,255,255,.26) 46%,rgba(255,255,255,.44) 100%);
+
+  --glass-edge:
+    inset 0 0 0 1px rgba(255,255,255,.5),
+    inset 0 2px 1px -1px rgba(255,255,255,1),
+    inset 0 -2px 2px -1px rgba(255,255,255,.75),
+    inset 3px 0 6px -3px rgba(255,255,255,.8),
+    inset -3px 0 6px -3px rgba(255,255,255,.8),
+    inset 0 -9px 14px -10px rgba(60,92,104,.5),
+    inset 0 9px 14px -10px rgba(60,92,104,.28);
+
+  --drop:0 18px 40px -22px rgba(60,92,104,.42), 0 2px 6px -2px rgba(60,92,104,.16);
+
+  --lens-rim:conic-gradient(from 205deg at 50% 50%,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.55) 12%,
+      rgba(153,201,97,.55) 28%,
+      rgba(155,196,188,.50) 44%,
+      rgba(60,92,104,.42) 62%,
+      rgba(255,255,255,.35) 80%,
+      rgba(255,255,255,.98) 100%);
+
+  --ease-liquid:cubic-bezier(.16,1.1,.3,1);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+
+  --sans:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --display:"Playfair Display",Georgia,serif;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  margin:0;font-family:var(--sans);color:var(--ink);
+  background:#f0f5f0;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:none;
+}
+:focus-visible{outline:2px solid var(--mb-teal);outline-offset:3px;border-radius:6px}
+
+/* ============ LAYER 1. CANVAS ============ */
+#canvas{position:fixed;inset:0;z-index:-4;
+  background:linear-gradient(160deg,#f0f5f0,#e8f2f4 35%,#f5f7ee 70%,#faf8f0)}
+
+/* ============ LAYER 2. ORBS ============ */
+.orb{position:fixed;border-radius:50%;filter:blur(52px);opacity:.8;z-index:-3;pointer-events:none;will-change:top,left}
+#o1{width:520px;height:520px;background:radial-gradient(circle,#99C961 0%,transparent 70%);animation:roam1 12s ease-in-out infinite}
+#o2{width:440px;height:440px;background:radial-gradient(circle,#3c5c68 0%,transparent 70%);opacity:.6;animation:roam2 15s ease-in-out infinite}
+#o3{width:400px;height:400px;background:radial-gradient(circle,#fbaf41 0%,transparent 70%);opacity:.55;animation:roam3 11s ease-in-out infinite}
+#o4{width:340px;height:340px;background:radial-gradient(circle,#fc826d 0%,transparent 70%);opacity:.5;animation:roam4 13s ease-in-out infinite}
+#o5{width:300px;height:300px;background:radial-gradient(circle,#9bc4bc 0%,transparent 70%);opacity:.45;animation:roam5 14s ease-in-out infinite}
+@keyframes roam1{0%{top:-10vh;left:-8vw}25%{top:20vh;left:55vw}50%{top:60vh;left:15vw}75%{top:30vh;left:75vw}100%{top:-10vh;left:-8vw}}
+@keyframes roam2{0%{top:10vh;left:70vw}25%{top:55vh;left:30vw}50%{top:5vh;left:10vw}75%{top:70vh;left:65vw}100%{top:10vh;left:70vw}}
+@keyframes roam3{0%{top:65vh;left:5vw}25%{top:10vh;left:40vw}50%{top:50vh;left:70vw}75%{top:80vh;left:25vw}100%{top:65vh;left:5vw}}
+@keyframes roam4{0%{top:75vh;left:60vw}25%{top:20vh;left:80vw}50%{top:45vh;left:20vw}75%{top:10vh;left:50vw}100%{top:75vh;left:60vw}}
+@keyframes roam5{0%{top:40vh;left:40vw}25%{top:70vh;left:10vw}50%{top:15vh;left:65vw}75%{top:55vh;left:50vw}100%{top:40vh;left:40vw}}
+
+/* ============ LAYER 3. GRAIN ============ */
+#grain{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.30;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.55'/></svg>")}
+
+/* ============ LAYER 4. GLASS ============ */
+.glass{
+  position:relative;border:none;border-radius:var(--r-lg);
+  background:var(--glass-fill);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  box-shadow:var(--glass-edge),var(--drop);
+  isolation:isolate;
+}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.75),transparent 60%);
+  opacity:0;transition:opacity .45s var(--ease-out)}
+.glass:hover::before,.glass:focus-visible::before,.glass:focus-within::before{opacity:1}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;
+  background:var(--lens-rim);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
+.glass>*{position:relative;z-index:1}
+
+/* ============ HEADER ============ */
+header#bar{position:sticky;top:0;z-index:60;height:var(--bar-h);
+  display:flex;align-items:center;gap:var(--s3);padding:0 var(--s4);
+  border:none;border-radius:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.34));
+  backdrop-filter:blur(20px) saturate(210%) brightness(1.06);
+  -webkit-backdrop-filter:blur(20px) saturate(210%) brightness(1.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 10px 26px -20px rgba(60,92,104,.5)}
+.mark{display:flex;align-items:center;gap:var(--s2);text-decoration:none;color:inherit}
+.seed{font-size:19px;line-height:1;display:inline-block;animation:breathe 6s var(--ease-out) infinite}
+@keyframes breathe{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.09) rotate(-3deg)}}
+.mark b{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.01em;color:var(--ink)}
+.mark span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+  padding-left:var(--s2);border-left:1px solid var(--hairline);margin-left:var(--s1)}
+@media(max-width:560px){.mark span{display:none}}
+.barspacer{flex:1 1 auto}
+.back{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--mb-teal);text-decoration:none;
+  padding:9px 15px;border-radius:999px;background:rgba(255,255,255,.55);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 4px 12px -8px rgba(60,92,104,.6);
+  min-height:44px;border:none;cursor:pointer;
+  transition:transform .2s var(--ease-liquid),background .2s var(--ease-out)}
+.back:hover{background:rgba(255,255,255,.75)}
+.back:active{transform:scale(.94)}
+.back svg{width:15px;height:15px}
+.rainbow{position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,var(--mb-green),var(--mb-yellow),var(--mb-amber),var(--mb-coral),var(--mb-sage),var(--mb-green));
+  background-size:320% 100%;animation:flow 16s linear infinite}
+@keyframes flow{0%{background-position:0% 50%}100%{background-position:320% 50%}}
+
+/* ============ LAYOUT ============ */
+main{max-width:860px;margin:0 auto;padding:var(--s6) var(--s4) var(--s7)}
+section{margin-top:var(--s7)}
+section:first-of-type{margin-top:var(--s5)}
+.hero{text-align:left;padding:var(--s2) 0 0}
+.hero p.eyebrow{margin:0 0 var(--s2);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:700;color:var(--ink-soft)}
+.hero h1{font-family:var(--display);font-weight:600;font-size:38px;line-height:1.1;
+  letter-spacing:-.015em;margin:0 0 var(--s3);color:var(--ink)}
+.hero h1 em{font-style:italic;
+  background:linear-gradient(104deg,var(--mb-green),var(--mb-amber) 52%,var(--mb-coral));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin:0;max-width:52ch}
+@media(max-width:520px){.hero h1{font-size:30px}}
+
+.sec{display:flex;align-items:center;gap:var(--s2);margin:0 0 var(--s4);
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
+.sec i{width:7px;height:7px;border-radius:50%;background:var(--d);flex:0 0 7px;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--d) 22%,transparent),0 0 10px var(--d)}
+.sec u{flex:1;height:1px;border:none;text-decoration:none;
+  background:linear-gradient(90deg,var(--hairline),transparent)}
+
+/* ============ CARD ============ */
+.card{padding:var(--s5)}
+.card + .card{margin-top:var(--s3)}
+.card h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 var(--s3);
+  letter-spacing:-.005em;color:var(--ink)}
+.card p{font-size:13px;line-height:1.7;color:var(--ink-soft);margin:0 0 var(--s3)}
+.card p:last-child{margin-bottom:0}
+.card p strong{color:var(--ink);font-weight:700}
+
+/* ============ NUMBERED STEPS ============ */
+.steps{list-style:none;margin:0 0 var(--s3);padding:0;display:flex;flex-direction:column;gap:var(--s3)}
+.steps li{display:flex;gap:var(--s3);align-items:flex-start}
+.steps .num{flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(150deg,rgba(153,201,97,.42),rgba(255,222,92,.28));
+  color:var(--mb-teal);font-size:12px;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+  margin-top:1px}
+.steps p{margin:0;font-size:13px;line-height:1.65;color:var(--ink-soft)}
+.steps p strong{color:var(--ink)}
+
+/* ============ QUICK REFERENCE ============ */
+ul.rules{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--s2)}
+ul.rules li{display:flex;gap:var(--s3);align-items:baseline}
+ul.rules li::before{content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:var(--d,var(--mb-green));margin-top:7px}
+ul.rules li span{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+ul.rules li span strong{color:var(--ink);font-weight:700}
+
+/* ============ TIER ROWS (no call / no show) ============ */
+.tier{display:flex;align-items:flex-start;gap:var(--s3);padding:var(--s3) 0}
+.tier + .tier{border-top:1px solid var(--hairline)}
+.tier .rdot{flex:0 0 8px;width:8px;height:8px;border-radius:50%;margin-top:6px;
+  background:var(--d);box-shadow:0 0 0 3px color-mix(in srgb,var(--d) 20%,transparent)}
+.tier .ttxt b{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--d);margin-bottom:3px}
+.tier .ttxt p{margin:0;font-size:13px;line-height:1.65;color:var(--ink-soft)}
+
+/* ============ MINI GRID ============ */
+.grid3{display:grid;gap:var(--s3);grid-template-columns:repeat(3,1fr)}
+@media(max-width:640px){.grid3{grid-template-columns:1fr}}
+.mini{padding:var(--s4)}
+.mini .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--mb-teal);
+  background:linear-gradient(150deg,color-mix(in srgb,var(--d) 40%,transparent),rgba(255,255,255,.34));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);margin-bottom:var(--s3)}
+.mini .ico svg{width:20px;height:20px}
+.mini b{display:block;font-size:13px;font-weight:700;margin-bottom:4px}
+.mini p{margin:0;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+
+/* ============ UNIFORM ITEMS ============ */
+.item{display:flex;gap:var(--s4);align-items:flex-start;padding:var(--s4) 0}
+.item + .item{border-top:1px solid var(--hairline)}
+.item .ico{flex:0 0 52px;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  color:var(--mb-teal);background:linear-gradient(150deg,rgba(153,201,97,.30),rgba(155,196,188,.26));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.item .ico svg{width:24px;height:24px}
+.item b{display:block;font-size:13.5px;font-weight:700;margin-bottom:4px;color:var(--ink)}
+.item p{margin:0;font-size:12.5px;line-height:1.65;color:var(--ink-soft)}
+
+.callout{margin-top:var(--s5);padding:var(--s4) var(--s5);border-radius:var(--r-md);
+  background:linear-gradient(150deg,rgba(215,1,88,.10),rgba(255,255,255,.30));
+  box-shadow:inset 0 0 0 1px rgba(215,1,88,.16)}
+.callout p{margin:0;font-size:12.5px;line-height:1.65;color:var(--ink)}
+.callout p strong{color:var(--mb-pinkberry)}
+
+/* ============ ENTRANCE ============ */
+.rise{opacity:0;transform:translateY(14px);animation:rise .7s var(--ease-out) forwards}
+.rise:nth-of-type(1){animation-delay:.00s}
+.d1{animation-delay:.09s}.d2{animation-delay:.18s}.d3{animation-delay:.27s}
+.d4{animation-delay:.36s}.d5{animation-delay:.45s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+footer{max-width:860px;margin:0 auto;padding:0 var(--s4) var(--s7);text-align:center}
+footer p{font-size:10px;color:var(--ink-faint);letter-spacing:.06em;margin:0}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .rise{opacity:1;transform:none}
+}
+
+/* ===== allergen guide ===== */
+.find{position:sticky;top:calc(var(--bar-h) + 8px);z-index:50;margin-top:var(--s5);padding:6px 8px 6px 16px;display:flex;align-items:center;gap:var(--s2);border-radius:999px}
+.find svg{width:18px;height:18px;flex:0 0 18px;color:var(--mb-teal)}
+.find input{flex:1;min-width:0;min-height:44px;border:none;background:transparent;font:inherit;font-size:14px;color:var(--ink);outline:none}
+.find input::placeholder{color:var(--ink-faint)}
+.find button{min-height:44px;min-width:44px;border:none;border-radius:999px;background:rgba(255,255,255,.55);color:var(--mb-teal);font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:0 14px;transition:transform .2s var(--ease-liquid)}
+.find button:active{transform:scale(.94)}
+.find:focus-within{outline:2px solid var(--mb-teal);outline-offset:3px}
+.key{margin-top:var(--s4);padding:var(--s4) var(--s5)}
+.key ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s2) var(--s4)}
+.key li{display:flex;align-items:center;gap:var(--s2);font-size:12.5px;color:var(--ink-soft)}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;padding:0 8px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--mb-teal);background:linear-gradient(150deg,rgba(153,201,97,.40),rgba(155,196,188,.30));box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.chip.o{background:linear-gradient(150deg,rgba(251,175,69,.45),rgba(255,222,92,.30))}
+.snote{font-size:12px;line-height:1.6;color:var(--ink-soft);margin:0 0 var(--s2)}
+.dish{padding:var(--s3) 0}
+.dish + .dish,.snote + .dish{border-top:1px solid var(--hairline)}
+.dish .top{display:flex;align-items:center;flex-wrap:wrap;gap:6px var(--s2);margin-bottom:5px}
+.dish b{font-size:13.5px;font-weight:700;color:var(--ink);margin-right:var(--s1)}
+.dish p{margin:0;font-size:12.5px;line-height:1.65;color:var(--ink-soft)}
+.dish p strong{color:var(--ink);font-weight:700}
+.dish p .src{color:var(--ink-faint)}
+mark{background:rgba(255,222,92,.65);color:inherit;border-radius:3px;padding:0 1px}
+.none{display:none;margin-top:var(--s5);padding:var(--s5);text-align:center;font-size:13px;color:var(--ink-soft)}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+
+<div id="canvas"></div>
+<div class="orb" id="o1"></div><div class="orb" id="o2"></div><div class="orb" id="o3"></div>
+<div class="orb" id="o4"></div><div class="orb" id="o5"></div>
+<div id="grain"></div>
+
+<header id="bar">
+  <a class="mark" href="#top">
+    <span class="seed" aria-hidden="true">🌱</span>
+    <b>The Greenhouse</b>
+    <span>Morning Belle</span>
+  </a>
+  <div class="barspacer"></div>
+  <button type="button" class="back" onclick="(function(){var H='https://morningbellebrunch.github.io/Greenhouse-Training-Hub/';var r=document.referrer||'';if(r.indexOf(H)===0&&history.length>1){history.back();}else{location.href=H;}})()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    Back
+  </button>
+  <div class="rainbow" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+
+  <section class="hero rise">
+    <p class="eyebrow">Food and Beverage Safety</p>
+    <h1>Morning Belle <em>Allergen</em> Guide</h1>
+    <p>Look up any dish by name or allergen. 2026 menu.</p>
+  </section>
+
+  <div class="find glass rise d1" role="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+    <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Search a dish or allergen" aria-label="Search the allergen guide">
+    <button type="button" id="clr" class="hide">Clear</button>
+  </div>
+
+  <div class="key glass rise d2" aria-label="Menu key">
+    <ul>
+      <li><span class="chip">GF</span>Gluten friendly</li>
+      <li><span class="chip">VE</span>Vegan</li>
+      <li><span class="chip">V</span>Vegetarian</li>
+      <li><span class="chip">DF</span>Dairy free</li>
+      <li><span class="chip o">O</span>Dietary modification option</li>
+    </ul>
+  </div>
+
+  <p class="none glass" id="none">No dishes match. Try another word.</p>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-green)"><i></i>Pastries<u></u></p>
+    <div class="card glass">
+      <div class="dish"><div class="top"><b>Doughnut Waffles</b><span class="chip">V</span></div><p><strong>Egg</strong>, <strong>Gluten</strong>, <strong>Dairy, Soy</strong> <span class="src">(Doughnut Waffles)</span>, <strong>Dairy</strong> <span class="src">(Vanilla Glaze)</span></p></div>
+      <div class="dish"><div class="top"><b>Maple Glazed Cinnamon Roll</b><span class="chip">V</span></div><p><strong>Gluten, Dairy, Soy</strong> <span class="src">(Cinnamon Roll)</span>, <strong>Dairy</strong> <span class="src">(Maple Glaze)</span></p></div>
+      <div class="dish"><div class="top"><b>Chit Chats</b><span class="chip">V</span></div><p><strong>Egg, Dairy, Soy, Gluten</strong> <span class="src">(Doughnut Bites)</span>, <strong>Dairy</strong> <span class="src">(Vanilla Glaze)</span></p></div>
+      <div class="dish"><div class="top"><b>Butter Danish Bites</b><span class="chip">V</span></div><p><strong>Gluten, Dairy, Soy</strong> <span class="src">(Danish Bites)</span>, <strong>Dairy</strong> <span class="src">(Lemon Glaze, Whipped Yogurt, Butter Danish)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-yellow)"><i></i>Bennies<u></u></p>
+    <div class="card glass">
+      <p class="snote">All bennies served on toasted Herbed Focaccia <span class="src">(Gluten and Soy)</span>, with a cherry tomato spring mix salad.</p>
+      <div class="dish"><div class="top"><b>Morning Belle Benedict</b><span class="chip o">GFO</span></div><p><strong>Egg</strong> <span class="src">(Poached eggs)</span>, <strong>Gluten, Soy</strong> <span class="src">(Herbed Focaccia)</span>, <strong>Egg, Dairy</strong> <span class="src">(Hollandaise)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span></p></div>
+      <div class="dish"><div class="top"><b>The Gardner&#x27;s Benedict</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Egg</strong> <span class="src">(Poached eggs)</span>, <strong>Gluten, Soy</strong> <span class="src">(Herbed Focaccia)</span>, <strong>Dairy, Garlic</strong> <span class="src">(Basil Pesto)</span>, <strong>Egg, Dairy</strong> <span class="src">(Hollandaise)</span>, <strong>Garlic, Onion</strong> <span class="src">(Roasted Artichokes)</span></p></div>
+      <div class="dish"><div class="top"><b>Smoked Salmon Benedict</b><span class="chip o">GFO</span></div><p><strong>Egg</strong> <span class="src">(Poached eggs)</span>, <strong>Gluten, Soy</strong> <span class="src">(Herbed Focaccia)</span>, <strong>Fin Fish</strong> <span class="src">(Smoked salmon)</span>, <strong>Egg, Dairy</strong> <span class="src">(Hollandaise)</span>, <strong>Garlic, Sesame, Onion</strong> <span class="src">(Everything Bagel seasoning)</span>, <strong>Garlic, Dairy, Onion</strong> <span class="src">(Caper Dill schmear)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-amber)"><i></i>Toasts<u></u></p>
+    <div class="card glass">
+      <p class="snote">All toast served on thick cut Multigrain toast <span class="src">(Gluten and Soy)</span>, two eggs <span class="src">(Egg)</span>, and prepared with butter alternative <span class="src">(Soy)</span>.</p>
+      <div class="dish"><div class="top"><b>Avocado Toast</b><span class="chip o">GFO</span><span class="chip">DF</span><span class="chip o">VEO</span><span class="chip">V</span></div><p><strong>Gluten, Soy</strong> <span class="src">(Multigrain bread)</span>, <strong>Dairy, Garlic</strong> <span class="src">(Basil Pesto)</span></p></div>
+      <div class="dish"><div class="top"><b>Smoked Salmon Toast</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten, Soy</strong> <span class="src">(Multigrain bread)</span>, <strong>Fin Fish</strong> <span class="src">(Smoked salmon)</span>, <strong>Garlic</strong> , <strong>Dairy, Onion</strong> <span class="src">(Caper Dill schmear)</span></p></div>
+      <div class="dish"><div class="top"><b>Gardener&#x27;s Toast</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Gluten, Soy</strong> <span class="src">(Multigrain bread)</span>, <strong>Dairy, Garlic</strong> <span class="src">(Herbed Goat Cheese Fondue)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-coral)"><i></i>Omelets<u></u></p>
+    <div class="card glass">
+      <p class="snote">All omelets prepared with butter alternative <span class="src">(Soy)</span>, served with buttered <span class="src">(Dairy)</span> Multigrain toast <span class="src">(Gluten and Soy)</span>.</p>
+      <div class="dish"><div class="top"><b>Classic Omelet</b></div><p><strong>Egg, Dairy</strong></p></div>
+      <div class="dish"><div class="top"><b>Egg White Omelet</b></div><p><strong>Egg</strong></p></div>
+      <div class="dish"><div class="top"><b>Morning Belle Style Omelet</b></div><p><strong>Egg</strong></p></div>
+      <div class="dish"><div class="top"><b>Build Your Own Omelet</b><span class="chip o">GFO</span><span class="chip">V</span><span class="chip o">DFO</span></div><p><strong>Egg</strong>, <strong>Dairy</strong> <span class="src">(Omelet mix)</span>, <strong>Dairy</strong> <span class="src">(Cheddar cheese)</span></p></div>
+      <div class="dish"><div class="top"><b>Farmhand Omelet</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Egg, Dairy</strong> <span class="src">(Omelet mix)</span>, <strong>Dairy</strong> <span class="src">(Pepperjack Cheese)</span>, <strong>Gluten, Dairy</strong> <span class="src">(Peppercorn gravy)</span>, <strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span></p></div>
+      <div class="dish"><div class="top"><b>Fresh Harvest Omelet</b><span class="chip o">GFO</span><span class="chip">V</span><span class="chip o">DFO</span></div><p><strong>Egg, Dairy</strong> <span class="src">(Omelet mix)</span>, <strong>Dairy, Garlic</strong> <span class="src">(Herbed Goat Cheese Fondue)</span></p></div>
+      <div class="dish"><div class="top"><b>Chicken Bacon Ranch Omelet</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Egg, Dairy</strong> <span class="src">(Omelet mix)</span>, <strong>Dairy</strong> <span class="src">(Provolone cheese)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span></p></div>
+      <div class="dish"><div class="top"><b>Morning Belle Omelet</b><span class="chip o">GFO</span><span class="chip o">VO</span><span class="chip o">DFO</span></div><p><strong>Egg, Dairy</strong> <span class="src">(Omelet mix)</span>, <strong>Dairy</strong> <span class="src">(Cheddar cheese, Smoky Sriracha Sour Cream)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span>, <strong>Garlic, Sesame</strong> <span class="src">(Smoky Sriracha Sour Cream)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-sage)"><i></i>Bowls<u></u></p>
+    <div class="card glass">
+      <p class="snote">All served with buttered <span class="src">(Dairy)</span> multigrain toast <span class="src">(Gluten and Soy)</span>, two eggs <span class="src">(Egg)</span>, and prepared with butter alternative <span class="src">(Soy)</span>.</p>
+      <div class="dish"><div class="top"><b>Shrimp and Chorizo Grits</b><span class="chip o">GFO</span></div><p><strong>Dairy</strong> <span class="src">(Cheddar Grits)</span>, <strong>Shellfish/Crustacean</strong> <span class="src">(Shrimp)</span>, <strong>Garlic</strong> <span class="src">(Cajun shrimp seasoning)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span></p></div>
+      <div class="dish"><div class="top"><b>Meat Lovers Bowl</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span>, <strong>Dairy</strong> <span class="src">(Cheddar, Pepperjack cheese, Smoky Sriracha Sour Cream)</span>, <strong>Garlic, Sesame</strong> <span class="src">(Smoky Sriracha Sour Cream)</span></p></div>
+      <div class="dish"><div class="top"><b>Farmhand Hash</b><span class="chip o">GFO</span></div><p><strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span>, <strong>Dairy</strong> <span class="src">(Pepperjack Cheese)</span>, <strong>Gluten, Dairy</strong> <span class="src">(Peppercorn Gravy)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span></p></div>
+      <div class="dish"><div class="top"><b>Garden Grain Bowl</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Soy, Garlic</strong> <span class="src">(Sriracha Honey glaze)</span>, <strong>Garlic, Onion</strong> <span class="src">(Quinoa)</span></p></div>
+      <div class="dish"><div class="top"><b>Truffle Mushroom Hash</b><span class="chip o">GFO</span><span class="chip">GF</span><span class="chip">V</span></div><p><strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span>, <strong>Dairy</strong> <span class="src">(Goat Cheese)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-green)"><i></i>Superfood Bowls<u></u></p>
+    <div class="card glass">
+      <div class="dish"><div class="top"><b>Berry Bowl</b><span class="chip">GF</span><span class="chip">VE</span></div><p><strong>Tree Nut</strong> <span class="src">(Pecans)</span></p></div>
+      <div class="dish"><div class="top"><b>Steel Cut Oats Bowl</b><span class="chip o">DFO</span><span class="chip">V</span></div><p><strong>Gluten</strong> <span class="src">(Oats)</span>, <strong>Gluten, Soy</strong> <span class="src">(Multigrain toast)</span>, <strong>Dairy</strong> <span class="src">(Whipped Greek Yogurt)</span></p></div>
+      <div class="dish"><div class="top"><b>Parfait Bowl</b><span class="chip">GF</span><span class="chip">V</span></div><p><strong>Dairy</strong> <span class="src">(Whipped Greek Yogurt)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-yellow)"><i></i>Griddle<u></u></p>
+    <div class="card glass">
+      <p class="snote">All served with Maple Syrup.</p>
+      <p class="snote">All griddle items prepared with butter alternative <span class="src">(Soy)</span>.</p>
+      <div class="dish"><div class="top"><b>Cinnamon Roll French Toast</b><span class="chip">V</span></div><p><strong>Dairy, Gluten, Soy</strong> <span class="src">(Cinnamon Rolls)</span>, <strong>Dairy, Egg</strong> <span class="src">(French Toast batter)</span>, <strong>Dairy</strong> <span class="src">(Maple Glaze)</span>, <strong>Tree Nut</strong> <span class="src">(Pecans)</span></p></div>
+      <div class="dish"><div class="top"><b>Banana Pudding French Toast</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Egg, Dairy, Gluten, Soy</strong> <span class="src">(Brioche Bread)</span>, <strong>Dairy</strong> <span class="src">(Banana Pudding)</span>, <strong>Dairy, Egg</strong> <span class="src">(French Toast batter)</span></p></div>
+      <div class="dish"><div class="top"><b>Blueberry Pancakes</b><span class="chip">V</span></div><p><strong>Egg, Dairy, Gluten</strong> <span class="src">(Pancake batter)</span>, <strong>Dairy</strong> <span class="src">(Butter on top)</span></p></div>
+      <div class="dish"><div class="top"><b>Chocolate Chip Pancakes</b><span class="chip">V</span></div><p><strong>Egg, Dairy, Gluten</strong> <span class="src">(Pancake batter)</span>, <strong>Dairy</strong> <span class="src">(Whipped Cream)</span></p></div>
+      <div class="dish"><div class="top"><b>Buckwheat Banana Pancakes</b><span class="chip">V</span></div><p><strong>Gluten, Soy, Dairy</strong> <span class="src">(Buckwheat pancake mix)</span>, <strong>Tree Nut</strong> <span class="src">(Pecans)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-amber)"><i></i>Breakfast Handhelds<u></u></p>
+    <div class="card glass">
+      <p class="snote">Served with your choice of signature potatoes <span class="src">(Soy, Garlic)</span> or cherry tomato spring mix salad.</p>
+      <p class="snote">Bread and buns toasted with butter alternative <span class="src">(Soy)</span>.</p>
+      <div class="dish"><div class="top"><b>Waffle BLTE</b><span class="chip o">GFO</span></div><p><strong>Egg, Dairy, Gluten</strong> <span class="src">(Waffle Batter)</span>, <strong>Garlic, Egg</strong> <span class="src">(Sweet Chili Aioli)</span>, <strong>Egg</strong> <span class="src">(Fried Eggs)</span></p></div>
+      <div class="dish"><div class="top"><b>Breakfast Burger</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten</strong> <span class="src">(Pretzel Bun)</span>, <strong>Dairy</strong> <span class="src">(Pepperjack cheese)</span>, <strong>Egg</strong> <span class="src">(Fried Egg, Chipotle Aioli)</span></p></div>
+      <div class="dish"><div class="top"><b>Farmers Bagel Stack</b><span class="chip o">GFO</span></div><p><strong>Gluten</strong> <span class="src">(Everything Bagel)</span>, <strong>Dairy</strong> <span class="src">(Provolone)</span>, <strong>Egg</strong> <span class="src">(Fried Egg, Brown Mustard Aioli)</span>, <strong>Sesame, Garlic, Onion</strong> <span class="src">(Everything Bagel Seasoning)</span></p></div>
+      <div class="dish"><div class="top"><b>Chicken and The Egg</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten</strong> <span class="src">(Artisan Bun, crispy onion)</span>, <strong>Egg</strong> <span class="src">(Fried Egg, Sweet Chili Aioli)</span>, <strong>Garlic</strong> <span class="src">(Sweet Chili Aioli)</span></p></div>
+      <div class="dish"><div class="top"><b>Morning Belle Breakfast Burrito</b><span class="chip o">DFO</span></div><p><strong>Dairy</strong> <span class="src">(Provolone Cheese)</span>, <strong>Gluten</strong> <span class="src">(Flour tortilla)</span>, <strong>Gluten, Soy, Onion, Garlic</strong> <span class="src">(Bourbon Glaze)</span>, <strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span>, <strong>Egg</strong> <span class="src">(Fried Eggs, Chipotle Aioli)</span></p></div>
+      <div class="dish"><div class="top"><b>Chorizo Poblano Breakfast Burrito</b></div><p><strong>Gluten</strong> <span class="src">(Flour tortilla)</span>, <strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span>, <strong>Egg, Dairy</strong> <span class="src">(Scrambled Egg mix)</span>, <strong>Dairy</strong> <span class="src">(Pepperjack Cheese, Smoky Sriracha Sour Cream)</span>, <strong>Garlic, Sesame</strong> <span class="src">(Smoky Sriracha Sour Cream drizzle)</span></p></div>
+      <div class="dish"><div class="top"><b>Smoked Salmon Croissant</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten</strong> <span class="src">(Multigrain Croissant)</span>, <strong>Fin Fish</strong> <span class="src">(Smoked salmon)</span>, <strong>Garlic</strong>, <strong>Dairy, Onion</strong> <span class="src">(Caper Dill schmear)</span>, <strong>Egg</strong> <span class="src">(Fried Egg)</span></p></div>
+      <div class="dish"><div class="top"><b>French Toastwich</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten, Dairy, Soy, Egg</strong> <span class="src">(Brioche, French Toast Batter)</span>, <strong>Dairy</strong> <span class="src">(American Cheese, Maple Glaze)</span>, <strong>Egg</strong> <span class="src">(Fried Eggs)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-coral)"><i></i>Midday Belle Handhelds<u></u></p>
+    <div class="card glass">
+      <p class="snote">All handhelds are served with Potato Chips.</p>
+      <p class="snote">Bread and buns toasted with butter alternative <span class="src">(Soy)</span>.</p>
+      <div class="dish"><div class="top"><b>Pulled Pork</b><span class="chip o">GFO</span></div><p><strong>Gluten</strong> <span class="src">(Artisan Bun, Crispy onion)</span>, <strong>Egg</strong> <span class="src">(Fried Egg)</span>, <strong>Gluten, Soy, Onion, Garlic</strong> <span class="src">(Smoky Bourbon BBQ)</span></p></div>
+      <div class="dish"><div class="top"><b>BLTA</b><span class="chip o">GFO</span><span class="chip">DF</span></div><p><strong>Gluten</strong> <span class="src">(Pretzel Bun)</span>, <strong>Egg, Garlic</strong> <span class="src">(Sweet Chili Aioli)</span></p></div>
+      <div class="dish"><div class="top"><b>Corned Beef</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten, Soy, Sesame</strong> <span class="src">(Split top roll)</span>, <strong>Egg</strong> <span class="src">(Fried Egg, Brown Mustard Aioli)</span>, <strong>Dairy</strong> <span class="src">(Pepperjack cheese)</span></p></div>
+      <div class="dish"><div class="top"><b>Caprese Stack</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Gluten</strong> <span class="src">(Herbed Focaccia, Crispy onion)</span>, <strong>Dairy</strong> <span class="src">(Mozzarella, Basil Pesto)</span>, <strong>Soy</strong> <span class="src">(Herbed Focaccia)</span>, <strong>Garlic</strong> <span class="src">(Basil Pesto, Marinated Roma Tomatoes)</span></p></div>
+      <div class="dish"><div class="top"><b>Garden Burger</b><span class="chip">V</span></div><p><strong>Gluten</strong> <span class="src">(Artisan Bun, Black Bean Patty, Crispy onions)</span>, <strong>Dairy</strong> <span class="src">(Creamy Pesto)</span>, <strong>Soy</strong> <span class="src">(Black Bean Patty)</span>, <strong>Garlic</strong> <span class="src">(Creamy Pesto, Black Bean Patty)</span></p></div>
+      <div class="dish"><div class="top"><b>Cheeseburger</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Gluten</strong> <span class="src">(Artisan Bun)</span>, <strong>Dairy</strong> <span class="src">(American Cheese)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-sage)"><i></i>Greens<u></u></p>
+    <div class="card glass">
+      <p class="snote">Make it a wrap with a flour tortilla <span class="src">(Gluten)</span>.</p>
+      <p class="snote">Add Cajun Shrimp <span class="src">(Shellfish, Garlic)</span>.</p>
+      <div class="dish"><div class="top"><b>Berry Bliss</b><span class="chip">GF</span><span class="chip">V</span></div><p><strong>Dairy</strong> <span class="src">(Goat Cheese)</span>, <strong>Soy, Garlic</strong> <span class="src">(Balsamic Vinaigrette)</span>, <strong>Tree Nut</strong> <span class="src">(Pecans)</span></p></div>
+      <div class="dish"><div class="top"><b>Fiesta Harvest</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Dairy</strong> <span class="src">(Feta, Chipotle Ranch)</span>, <strong>Gluten</strong> <span class="src">(Crispy Onions)</span></p></div>
+      <div class="dish"><div class="top"><b>Belle&#x27;s Caesar Salad</b><span class="chip o">GFO</span></div><p><strong>Gluten, Soy</strong> <span class="src">(Focaccia Croutons)</span>, <strong>Garlic, Dairy, Egg</strong> <span class="src">(Caesar dressing)</span>, <strong>Garlic, Onion</strong> <span class="src">(Roasted Artichokes)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-green)"><i></i>Classics<u></u></p>
+    <div class="card glass">
+      <div class="dish"><div class="top"><b>Breakfast #1</b><span class="chip o">GFO</span><span class="chip o">DFO</span><span class="chip o">VEO</span></div><p><strong>Egg</strong> <span class="src">(Eggs your way)</span>, <strong>Gluten, Soy</strong> <span class="src">(Multigrain toast)</span>, <strong>Soy, Garlic</strong> <span class="src">(Signature Potatoes)</span>, <strong>Dairy</strong> <span class="src">(Butter on toast side)</span></p></div>
+      <div class="dish"><div class="top"><b>Breakfast #2</b></div><p><strong>Egg</strong> <span class="src">(Eggs your way)</span>, <strong>Gluten, Dairy, Egg</strong> <span class="src">(Waffle and Pancake batter)</span>, <strong>Dairy</strong> <span class="src">(Butter on side)</span></p></div>
+      <div class="dish"><div class="top"><b>Belgian Waffle</b><span class="chip">V</span></div><p><strong>Egg, Dairy, Gluten</strong> <span class="src">(Waffle Batter)</span>, <strong>Dairy</strong> <span class="src">(Whipped Cream garnish, Butter side)</span></p></div>
+      <div class="dish"><div class="top"><b>French Toast</b><span class="chip o">GFO</span><span class="chip">V</span></div><p><strong>Egg, Dairy, Gluten, Soy</strong> <span class="src">(Thick Cut Artisan Brioche bread)</span>, <strong>Egg, Dairy</strong> <span class="src">(French Toast batter)</span>, <strong>Dairy</strong> <span class="src">(Whipped Cream garnish, Butter side)</span></p></div>
+      <div class="dish"><div class="top"><b>Morning Belle Pancakes</b><span class="chip">V</span></div><p><strong>Egg, Dairy, Gluten</strong> <span class="src">(Pancake batter)</span>, <strong>Dairy</strong> <span class="src">(Butter on top)</span></p></div>
+      <div class="dish"><div class="top"><b>Ham and Cheese Melt</b><span class="chip o">GFO</span></div><p><strong>Dairy</strong> <span class="src">(Cheddar, Provolone Cheeses)</span>, <strong>Gluten, Soy, Sesame</strong> <span class="src">(Split top roll)</span>, <strong>Egg</strong> <span class="src">(Brown Mustard Aioli)</span></p></div>
+      <div class="dish"><div class="top"><b>Morning Belle Wrap</b><span class="chip o">GFO</span><span class="chip o">DFO</span></div><p><strong>Dairy</strong> <span class="src">(Pepperjack Cheese, Creamy Pesto)</span>, <strong>Gluten</strong> <span class="src">(Flour tortilla)</span>, <strong>Garlic</strong> <span class="src">(Creamy Pesto)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-yellow)"><i></i>Little Gardener&#x27;s Menu<u></u></p>
+    <div class="card glass">
+      <div class="dish"><div class="top"><b>Little Gardner&#x27;s Breakfast</b></div><p><strong>Egg</strong> <span class="src">(Egg your way)</span>, <strong>Gluten, Soy</strong> <span class="src">(Multigrain toast)</span></p></div>
+      <div class="dish"><div class="top"><b>Cheesy Eggs</b></div><p><strong>Egg</strong> <span class="src">(Eggs)</span>, <strong>Dairy</strong> <span class="src">(Cheese, Scrambled eggs)</span>, <strong>Gluten, Soy</strong> <span class="src">(Multigrain toast)</span></p></div>
+      <div class="dish"><div class="top"><b>Little Gardner&#x27;s Pancake Breakfast</b></div><p><strong>Gluten, Dairy, Egg</strong> <span class="src">(Pancake Batter)</span></p></div>
+      <div class="dish"><div class="top"><b>Doughnut Waffle</b></div><p><strong>Gluten, Dairy, Egg</strong> <span class="src">(Doughnut waffle)</span>, <strong>Dairy</strong> <span class="src">(Butter on the side)</span></p></div>
+      <div class="dish"><div class="top"><b>French Toast Sticks</b></div><p><strong>Gluten, Egg, Dairy, Soy</strong> <span class="src">(Brioche Toast, French Toast batter)</span></p></div>
+      <div class="dish"><div class="top"><b>Kids Hamburger or Cheeseburger</b></div><p><strong>Gluten</strong> <span class="src">(Artisan Bun)</span>, <strong>Dairy</strong> <span class="src">(Cheddar cheese)</span></p></div>
+      <div class="dish"><div class="top"><b>Cheese Quesadilla</b></div><p><strong>Gluten</strong> <span class="src">(Flour Tortilla)</span>, <strong>Dairy</strong> <span class="src">(Cheddar cheese)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-amber)"><i></i>Sides<u></u></p>
+    <div class="card glass">
+      <div class="dish"><div class="top"><b>Biscuit and Gravy</b></div><p><strong>Gluten, Dairy</strong> <span class="src">(Biscuit, Peppercorn Gravy)</span></p></div>
+      <div class="dish"><div class="top"><b>Maple Glazed Cinnamon Roll</b></div><p><strong>Gluten, Dairy, Soy</strong> <span class="src">(Cinnamon Roll)</span>, <strong>Dairy</strong> <span class="src">(Maple Glaze)</span></p></div>
+      <div class="dish"><div class="top"><b>Signature Potatoes</b></div><p><strong>Soy</strong> <span class="src">(Butter Alternative)</span>, <strong>Garlic</strong> <span class="src">(Potato Spice)</span></p></div>
+      <div class="dish"><div class="top"><b>Loaded Signature Potatoes</b></div><p><strong>Soy</strong> <span class="src">(Butter Alternative)</span>, <strong>Garlic</strong> <span class="src">(Potato Spice, Smoky Sriracha Sour Cream)</span>, <strong>Dairy</strong> <span class="src">(Cheddar, Smoky Sriracha Sour Cream drizzle)</span>, <strong>Onion</strong> <span class="src">(Scallions)</span>, <strong>Sesame</strong> <span class="src">(Smoky Sriracha Sour Cream Drizzle)</span></p></div>
+      <div class="dish"><div class="top"><b>Steel Cut Oats</b></div><p><strong>Gluten</strong> <span class="src">(Oats)</span></p></div>
+      <div class="dish"><div class="top"><b>Multigrain Croissant</b></div><p><strong>Gluten</strong></p></div>
+      <div class="dish"><div class="top"><b>Cheddar Grits</b></div><p><strong>Dairy</strong> <span class="src">(in the Cheddar)</span></p></div>
+      <div class="dish"><div class="top"><b>Goat Cheese Fondue</b></div><p><strong>Dairy, Garlic</strong></p></div>
+      <div class="dish"><div class="top"><b>Sweet Potato Chips</b></div><p><strong>Allergen Free</strong></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-coral)"><i></i>Breads and Buns<u></u></p>
+    <div class="card glass">
+      <p class="snote">Toast with butter <span class="src">(Dairy)</span>.</p>
+      <div class="dish"><div class="top"><b>Multigrain Bread</b></div><p><strong>Soy, Gluten</strong></p></div>
+      <div class="dish"><div class="top"><b>Brioche Bread</b></div><p><strong>Soy, Gluten, Egg, Dairy</strong></p></div>
+      <div class="dish"><div class="top"><b>Sourdough</b></div><p><strong>Soy, Gluten</strong></p></div>
+      <div class="dish"><div class="top"><b>Brioche Bun</b></div><p><strong>Soy, Egg, Gluten, Dairy</strong></p></div>
+      <div class="dish"><div class="top"><b>Herbed Focaccia</b></div><p><strong>Soy, Gluten, Barley</strong></p></div>
+      <div class="dish"><div class="top"><b>Gluten Free Bread</b></div><p><strong>Egg</strong></p></div>
+      <div class="dish"><div class="top"><b>Artisan Bun</b></div><p><strong>Gluten</strong></p></div>
+      <div class="dish"><div class="top"><b>Split Top Roll</b></div><p><strong>Gluten, Sesame, Soy</strong></p></div>
+      <div class="dish"><div class="top"><b>Pretzel Bun</b></div><p><strong>Gluten</strong></p></div>
+      <div class="dish"><div class="top"><b>Everything Bagel</b></div><p><strong>Gluten</strong> <span class="src">(Bagel)</span>, <strong>Garlic, Sesame, Onion</strong> <span class="src">(Everything Bagel Seasoning)</span></p></div>
+    </div>
+  </section>
+
+  <section class="sect rise" data-sec>
+    <p class="sec" style="--d:var(--mb-green)"><i></i>Gluten Friendly Sides<u></u></p>
+    <div class="card glass">
+      <ul class="rules" style="--d:var(--mb-green)">
+        <li data-item><span>Bacon</span></li>
+        <li data-item><span>Sausage Patties</span></li>
+        <li data-item><span>Ham Steaks</span></li>
+        <li data-item><span>Chicken Sausage</span></li>
+        <li data-item><span>Turkey Bacon</span></li>
+        <li data-item><span>Signature Potatoes</span></li>
+        <li data-item><span>Loaded Signature Potatoes</span></li>
+        <li data-item><span>Seasonal Fresh Fruit</span></li>
+        <li data-item><span>Cheddar Grits</span></li>
+        <li data-item><span>Cherry Tomato Salad</span></li>
+        <li data-item><span>Gluten Free Toast</span></li>
+        <li data-item><span>Eggs</span></li>
+        <li data-item><span>Vegan Sausage Patties</span></li>
+        <li data-item><span>Vegan Egg</span></li>
+        <li data-item><span>Potato Chips</span></li>
+        <li data-item><span>Sweet Potato Chips</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Morning Belle &middot; The Greenhouse &middot; Food and Beverage Safety</p>
+</footer>
+
+<script>
+document.querySelectorAll('.glass').forEach(el => {
+  el.addEventListener('pointermove', ev => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100) + '%');
+    el.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100) + '%');
+  }, { passive:true });
+});
+
+/* search: filters dishes, hides empty sections */
+(function () {
+  const q = document.getElementById('q'), clr = document.getElementById('clr'), none = document.getElementById('none');
+  const secs = [].slice.call(document.querySelectorAll('[data-sec]'));
+  const rows = [].slice.call(document.querySelectorAll('.dish, [data-item]'));
+  rows.forEach(r => { r._h = r.innerHTML; });
+  function run() {
+    const v = q.value.trim().toLowerCase();
+    clr.classList.toggle('hide', !v);
+    rows.forEach(r => {
+      r.innerHTML = r._h;
+      const hit = !v || r.textContent.toLowerCase().indexOf(v) > -1;
+      r.classList.toggle('hide', !hit);
+    });
+    let any = false;
+    secs.forEach(s => {
+      const vis = s.querySelectorAll('.dish:not(.hide), [data-item]:not(.hide)').length > 0;
+      s.classList.toggle('hide', !vis);
+      if (vis) any = true;
+    });
+    none.style.display = any ? 'none' : 'block';
+  }
+  q.addEventListener('input', run);
+  clr.addEventListener('click', () => { q.value = ''; run(); q.focus(); });
+})();
+</script>
+</body>
+</html>
